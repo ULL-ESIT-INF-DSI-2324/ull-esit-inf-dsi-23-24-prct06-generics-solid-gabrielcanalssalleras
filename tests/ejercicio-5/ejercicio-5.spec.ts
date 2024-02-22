@@ -46,7 +46,7 @@ describe('File Manager', () => {
 		const notifier: Notifier = new Notifier(emailService);
 		notifier.sendNotification('Hello World!');
 		expect(consoleLog.calledOnce).to.be.true;
-		expect(consoleLog.calledWith('Sending notification by Notifier: Hello World!')).to.be.true;
+		expect(consoleLog.calledWith('Sending notification by email: Hello World!')).to.be.true;
 	});
-	
+
 });

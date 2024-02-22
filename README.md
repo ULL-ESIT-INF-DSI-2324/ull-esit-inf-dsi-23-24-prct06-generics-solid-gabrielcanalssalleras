@@ -68,7 +68,41 @@ Las pruebas unitarias para este ejercicio se encuentran en el fichero `tests/eje
 
 ### Ejercicio 2
 
-Este código se puede encontrar en el fichero `src/ejercicio-2.ts`.
+Para este ejercicio desarrollamos una interfaz base para las Facturas, `Factura` que incluirá:
+
+- `extension`: Extensión del fichero.
+- `nombre`: Nombre del formato.
+- `tipoFichero`: Tipo de fichero.
+- `numeroFactura`: Número de la factura.
+- `fecha`: Fecha de la factura.
+- `concepto`: Concepto de la factura.
+- `cliente`: Cliente de la factura.
+- `importe`: Importe de la factura.
+- Los getters de cada atributo.
+
+Desarrollamos dos clases de ejemplo `FacturaHTML` y `FacturaPDF` que implementan la interfaz `Factura`.
+
+Además creamos la clase `GestorFacturación` cuyo principal atributo es un array de `Factura`. Desde esta clase se pueden realizar las siguientes operaciones:
+
+- Añadir una factura al gestor.
+- Eliminar una factura del gestor.
+- Comprobar la facturacion total.
+
+Con esta estructura podemos crear nuevas clases de factura que implementen la interfaz `Factura` sin modificar la clase `GestorFacturación`. Este principio se conoce como **Principio de Abierto-Cerrado**.
+
+Este código se puede encontrar en el directorio `src/ejercicio-2`. Cada clase e interfaz se encuentra en un fichero separado.
+
+Las **pruebas** que se han realizado mediante el **Desarrollo Dirigido por Pruebas** son las siguientes:
+
+- Creación de una factura HTML.
+- Creación de una factura PDF.
+- Creación de un gestor de facturación.
+- Añadir una factura al gestor.
+- Eliminar una factura del gestor.
+- Comprobar la facturación total.
+- Creación de un nuevo formato de factura sin modificar el código existente.
+
+Las pruebas unitarias para este ejercicio se encuentran en el fichero `tests/ejercicio-2/ejercicio-2.spec.ts`.
 
 ### Ejercicio 3
 
