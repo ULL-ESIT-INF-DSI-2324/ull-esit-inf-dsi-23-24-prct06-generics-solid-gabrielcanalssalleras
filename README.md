@@ -78,13 +78,26 @@ S – **Principio de responsabilidad única**: La clase FileManager cumple con e
 
 O – **Principio abierto-cerrado**: El código no está completamente abierto para la extensión. Si se necesitan agregar nuevas funcionalidades se deberá modificar la clase FileManager.
  
+Para solucionar esta situación, procedemos a **abstraer** la funcionalidad de lectura y escritura de archivos en una interfaz `FileService` y una clase `FileSystemProvider` que implementa dicha interfaz. De esta manera, si se necesitan agregar nuevas funcionalidades, se pueden crear nuevas clases que implementen la interfaz `FileService` sin modificar la clase `FileManager`, que es la clase que se utilizar a nivel de aplicación.
+
 L – **Principio de sustitución de Liskov**: Al no haber subclases, este principio no es aplicable en el código. 
 
 I – **Principio de segregación de la interfaz**: La interfaz actual de FileManager es relativamente simple y parece suficiente. Si se agregaran más operaciones de gestión de archivos se debe considerar crear interfaces o métodos separados para cada funcionalidad.
 
 D – **Principio de inversión de dependencias**: De igual manera que con el Principio abierto-cerrado, la clase FileManager depende directamente del módulo fs para realizar operaciones de archivo, por lo que deberiamos abstraer el módulo fs para que la clase FileManager no dependa directamente de él.
 
-  Este código se puede encontrar en el fichero `src/ejercicio-3.ts`.
+Con la solución propuesto, ahora es posible crear nuevas clases que implementen la interfaz `FileService` sin modificar la clase `FileManager`. Además, se ha abstraído el módulo fs en la clase `FileSystemProvider` para que la clase `FileManager` no dependa directamente de él.
+
+Este código se puede encontrar en el directorio `src/ejercicio-3`. Cada clase e interfaz se encuentra en un fichero separado.
+
+Las **pruebas** que se han realizado mediante el **Desarrollo Dirigido por Pruebas** son las siguientes:
+
+- Creación del proveedor de sistema de archivos.
+- Creación del gestor de archivos.
+- Lectura de un archivo.
+- Escritura de un archivo.
+
+Las pruebas unitarias para este ejercicio se encuentran en el fichero `tests/ejercicio-3/ejercicio-3.spec.ts`.
 
 ### Ejercicio 4
 
