@@ -1,25 +1,25 @@
-interface PrintableScannable {
-  print(): void
-  scan(): void
+interface Printable {
+  print(): void;
 }
 
-class Printer implements PrintableScannable {
+interface Scannable {
+  scan(): void;
+}
+
+
+export class Printer implements Printable {
   print(): void {
     console.log('Printing...')
   }
-
-  scan(): void { }
 }
 
-class Scanner implements PrintableScannable {
-  print(): void { }
-
+export class Scanner implements Scannable {
   scan(): void {
     console.log('Scanning...')
   }
 }
 
-class PrinterScanner implements PrintableScannable {
+export class PrinterScanner implements Printable, Scannable {
   print(): void {
     console.log('Printing...')
   }

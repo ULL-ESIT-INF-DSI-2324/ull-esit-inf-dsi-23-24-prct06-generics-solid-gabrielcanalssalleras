@@ -101,7 +101,47 @@ Las pruebas unitarias para este ejercicio se encuentran en el fichero `tests/eje
 
 ### Ejercicio 4
 
-  Este código se puede encontrar en el fichero `src/ejercicio-4.ts`.
+Comprobemos si el código dado cumple con los principios SOLID:
+
+S – **Principio de responsabilidad única**: Cada clase realiza una única tarea, por lo que cumple con este principio. La iterfaz `PrintableScannable` también cumple con este principio.
+
+O – **Principio abierto-cerrado**: El código cumple con este principio en cierto grado. La interfaz `PrintableScannable` está abierta a la extensión (se pueden crear nuevas clases que la implementen), pero no está completamente cerrada a la modificación. Si se requieren nuevas funcionalidades de impresión o escaneo, la interfaz tendría que modificarse.
+
+L – **Principio de sustitución de Liskov**: El código cumple con este principio. Cualquier clase que implemente la interfaz PrintableScannable puede ser utilizada en lugar de otra clase que también implemente la misma interfaz, sin generar errores o un comportamiento inesperado.
+
+I – **Principio de segregación de la interfaz**: Se viola este principio. La interfaz `PrintableScannable` podria ser dividida en dos interfaces separadas, una para la impresión y otra para el escaneo.
+
+Esto se soluciona creando dos interfaces separadas, `Printable` y `Scannable`. De esta manera, las clases que necesiten implementar solo una de las dos funcionalidades pueden implementar la interfaz correspondiente:
+
+```ts
+interface Printable {
+  print(): void;
+}
+
+interface Scannable {
+  scan(): void;
+}
+
+class Printer implements Printable {}
+class Scanner implements Scannable {}
+class PrinterScanner implements Printable, Scannable {}
+```
+
+D – **Principio de inversión de dependencias**: Se cumple con este principio. La clase `Printer` y `Scanner` dependen de la interfaz `PrintableScannable` y no de las clases concretas que la implementan.
+
+Este código se puede encontrar en el fichero `src/ejercicio-4/ejercicio-4.ts`.
+
+Las **pruebas** que se han realizado mediante el **Desarrollo Dirigido por Pruebas** son las siguientes:
+
+- Creación de una impresora.
+- Creación de un escáner.
+- Creación de una impresora-escáner.
+- Impresión de un documento mediante la impresora.
+- Escaneo de un documento mediante el escáner.
+- Impresión de un documento mediante la impresora-escáner.
+- Escaneo de un documento mediante la impresora-escáner.
+
+Las pruebas unitarias para este ejercicio se encuentran en el fichero `tests/ejercicio-4/ejercicio-4.spec.ts`.
 
 ### Ejercicio 5
 
