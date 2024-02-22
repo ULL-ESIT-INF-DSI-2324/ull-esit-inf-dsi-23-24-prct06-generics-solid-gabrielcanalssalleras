@@ -1,32 +1,62 @@
-// class that allows notifications by email to be sent
+/**
+ * Clase que representa un servicio de notificación por correo electrónico.
+ */
 export class EmailService {
-  notify(message: string): void {
-    console.log(`Sending notification by email: ${message}`);
-  }
+ /**
+  * Método para enviar una notificación por correo electrónico.
+  * @param message - El mensaje a enviar.
+  */
+ notify(message: string): void {
+  console.log(`Sending notification by email: ${message}`);
+ }
 }
 
-// class that allows notifications by SMS to be sent
+/**
+ * Clase que representa un servicio de notificación por SMS.
+ */
 export class ShortMessageService {
-  notify(message: string): void {
-    console.log(`Sending notification by SMS: ${message}`);
-  }
+ /**
+  * Método para enviar una notificación por SMS.
+  * @param message - El mensaje a enviar.
+  */
+ notify(message: string): void {
+  console.log(`Sending notification by SMS: ${message}`);
+ }
 }
 
+/**
+ * Interfaz que representa un servicio de notificación.
+ */
 interface NotificationService {
-  notify(message: string): void;
+ /**
+  * Método para enviar una notificación.
+  * @param message - El mensaje a enviar.
+  */
+ notify(message: string): void;
 }
 
+/**
+ * Clase que representa un notificador.
+ */
 export class Notifier {
-  constructor(private notificationService: NotificationService) {}
+ /**
+  * Constructor de la clase Notifier.
+  * @param notificationService - Una instancia de NotificationService para enviar notificaciones.
+  */
+ constructor(private notificationService: NotificationService) {}
 
-  sendNotification(message: string): void {
-    this.notificationService.notify(message);
-  }
+ /**
+  * Método para enviar una notificación.
+  * @param message - El mensaje a enviar.
+  */
+ sendNotification(message: string): void {
+  this.notificationService.notify(message);
+ }
 }
 
 // Client code
 const emailNotifier = new Notifier(new EmailService());
-emailNotifier.sendNotification('Hello World!');
+emailNotifier.sendNotification("Hello World!");
 
 const shortMessageNotifier = new Notifier(new ShortMessageService());
-shortMessageNotifier.sendNotification('Hello World!');
+shortMessageNotifier.sendNotification("Hello World!");

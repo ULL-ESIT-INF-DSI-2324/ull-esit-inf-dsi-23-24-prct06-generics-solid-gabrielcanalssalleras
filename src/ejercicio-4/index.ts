@@ -1,32 +1,67 @@
+/**
+ * Interfaz que representa un objeto imprimible.
+ */
 interface Printable {
-  print(): void;
+ /**
+  * Método para imprimir.
+  */
+ print(): void;
 }
 
+/**
+ * Interfaz que representa un objeto escaneable.
+ */
 interface Scannable {
-  scan(): void;
+ /**
+  * Método para escanear.
+  */
+ scan(): void;
 }
 
-
+/**
+ * Clase que representa una impresora.
+ * Implementa la interfaz Printable.
+ */
 export class Printer implements Printable {
-  print(): void {
-    console.log('Printing...')
-  }
+ /**
+  * Método para imprimir.
+  */
+ print(): void {
+  console.log("Printing...");
+ }
 }
 
+/**
+ * Clase que representa un escáner.
+ * Implementa la interfaz Scannable.
+ */
 export class Scanner implements Scannable {
-  scan(): void {
-    console.log('Scanning...')
-  }
+ /**
+  * Método para escanear.
+  */
+ scan(): void {
+  console.log("Scanning...");
+ }
 }
 
+/**
+ * Clase que representa una impresora y escáner.
+ * Implementa las interfaces Printable y Scannable.
+ */
 export class PrinterScanner implements Printable, Scannable {
-  print(): void {
-    console.log('Printing...')
-  }
+ /**
+  * Método para imprimir.
+  */
+ print(): void {
+  console.log("Printing...");
+ }
 
-  scan(): void {
-    console.log('Scanning...')
-  }
+ /**
+  * Método para escanear.
+  */
+ scan(): void {
+  console.log("Scanning...");
+ }
 }
 
 // Client code

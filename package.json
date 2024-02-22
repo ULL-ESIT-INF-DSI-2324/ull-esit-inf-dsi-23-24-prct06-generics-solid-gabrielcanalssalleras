@@ -15,7 +15,7 @@
     "start2": "tsc-watch --onSuccess \"node dist/src/ejercicio-2/index.js\"",
     "start4": "tsc-watch --onSuccess \"node dist/src/ejercicio-4/index.js\"",
     "start5": "tsc-watch --onSuccess \"node dist/src/ejercicio-5/index.js\"",
-    "doc": "typedoc --out docs src; touch docs/.nojekyll"
+    "doc": "typedoc --out docs src/**/*.ts; touch docs/.nojekyll"
   },
   "keywords": [],
   "author": "",
