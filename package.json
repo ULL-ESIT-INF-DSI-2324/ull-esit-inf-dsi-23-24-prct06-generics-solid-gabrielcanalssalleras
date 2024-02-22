@@ -10,7 +10,7 @@
     "test3": "mocha ./tests/ejercicio-3/ejercicio-3.spec.ts",
     "test4": "mocha ./tests/ejercicio-4/ejercicio-4.spec.ts",
     "test5": "mocha ./tests/ejercicio-5jercicio-5.spec.ts",
-    "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
+    "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls && rm -rf .nyc_output",
     "start1": "tsc-watch --onSuccess \"node dist/src/ejercicio-1/index.js\"",
     "start2": "tsc-watch --onSuccess \"node dist/src/ejercicio-2/index.js\"",
     "start4": "tsc-watch --onSuccess \"node dist/src/ejercicio-4/index.js\"",
