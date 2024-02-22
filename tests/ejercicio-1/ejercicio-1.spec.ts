@@ -77,10 +77,13 @@ describe('Mudanza', () => {
   it('Se pueden añadir enseres a la mudanza', () => {
     expect(mudanza.agregarEnser(caja2, electrodomestico1)).to.not.throw;
     expect(mudanza.cajas[1].contenido).to.have.lengthOf(1);
+    const caja5 = new Caja<Enser>(1000);
+    mudanza.agregarCaja(caja5);
+    expect(mudanza.agregarEnser(caja5, electrodomestico1)).to.not.throw;
   }),
 
   it('Se puede calcular el peso total de la mudanza', () => {
-    expect(mudanza.calcularPesoTotal()).to.be.equal(400);
+    expect(mudanza.calcularPesoTotal()).to.be.equal(700);
   }),
 
   it('Se puede buscar un enser en la mudanza', () => {

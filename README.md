@@ -95,10 +95,14 @@ Este código se puede encontrar en el directorio `src/ejercicio-2`. Cada clase e
 Las **pruebas** que se han realizado mediante el **Desarrollo Dirigido por Pruebas** son las siguientes:
 
 - Creación de una factura HTML.
+- Obtención de los atributos de la factura HTML.
 - Creación de una factura PDF.
-- Creación de un gestor de facturación.
+- Obtención de los atributos de la factura PDF.
+- Creación de un gestor de facturación sin facturas.
+- Creación de un gestor de facturación con facturas.
 - Añadir una factura al gestor.
 - Eliminar una factura del gestor.
+- Si no se encuentra una factura en el gestor, no se elimina.
 - Comprobar la facturación total.
 - Creación de un nuevo formato de factura sin modificar el código existente.
 
@@ -130,6 +134,8 @@ Las **pruebas** que se han realizado mediante el **Desarrollo Dirigido por Prueb
 - Creación del gestor de archivos.
 - Lectura de un archivo.
 - Escritura de un archivo.
+- Error al leer un archivo que no existe.
+- Error al escribir un archivo que no existe.
 
 Las pruebas unitarias para este ejercicio se encuentran en el fichero `tests/ejercicio-3/ejercicio-3.spec.ts`.
 

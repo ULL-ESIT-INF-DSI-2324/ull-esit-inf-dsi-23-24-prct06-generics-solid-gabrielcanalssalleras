@@ -32,13 +32,40 @@ describe("Gestor de Facturación", () => {
 	expect(factura1).to.be.instanceOf(FacturaHTML);
  });
 
+ it("Pueden comprobarse los atributos de la factura en HTML", () => {
+	expect(factura1.getExtension()).to.be.equal("html");
+	expect(factura1.getNombre()).to.be.equal("HTML");
+	expect(factura1.getTipoFichero()).to.be.equal("texto");
+	expect(factura1.getNumeroFactura()).to.be.equal(1);
+	expect(factura1.getFecha()).to.be.equal("2021-01-01");
+	expect(factura1.getConcepto()).to.be.equal("Compra de material");
+	expect(factura1.getCliente()).to.be.equal("Juan");
+	expect(factura1.getImporte()).to.be.equal(100);
+ }),
+
  it("Se crea la instancia de la factura en PDF", () => {
 	expect(factura2).to.be.instanceOf(FacturaPDF);
+ }),
+
+ it("Pueden comprobarse los atributos de la factura en PDF", () => {
+	expect(factura2.getExtension()).to.be.equal("pdf");
+	expect(factura2.getNombre()).to.be.equal("PDF");
+	expect(factura2.getTipoFichero()).to.be.equal("texto");	
+	expect(factura2.getNumeroFactura()).to.be.equal(2);
+	expect(factura2.getFecha()).to.be.equal("2021-01-02");
+	expect(factura2.getConcepto()).to.be.equal("Compra de regalos");
+	expect(factura2.getCliente()).to.be.equal("Ana");
+	expect(factura2.getImporte()).to.be.equal(200);
  }),
 
  it("Se crea la instancia del gestor de facturación", () => {
 	expect(gestor).to.be.instanceOf(GestorFacturacion);
  });
+
+ it ("Puede crearse un gestor con facturas", () => {
+	const gestorConFacturas = new GestorFacturacion([factura1, factura2]);
+	expect(gestorConFacturas.getFacturas()).to.have.lengthOf(2);
+ }),
 
  it("Se pueden añadir facturas al gestor", () => {
 	gestor.addFactura(factura1);
@@ -47,6 +74,11 @@ describe("Gestor de Facturación", () => {
  }),
 
  it("Se pueden eliminar facturas del gestor", () => {
+	gestor.removeFactura(factura1);
+	expect(gestor.getFacturas()).to.have.lengthOf(1);
+ }),
+
+ it("No se eliminan facturas que no existen", () => {
 	gestor.removeFactura(factura1);
 	expect(gestor.getFacturas()).to.have.lengthOf(1);
  }),

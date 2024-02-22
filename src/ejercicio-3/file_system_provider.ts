@@ -5,6 +5,7 @@ export class FileSystemProvider implements FileService {
 	constructor(private readonly fsProvider: typeof fs) {}	
 	read(filePath: string): string {
 		try {			// Vamos a hacerlo síncrono porque no se si ya podemos usar programación asíncrona
+			if (filePath === "") throw TypeError;
 			return this.fsProvider.readFileSync(require.resolve(filePath), "utf-8");
 		} catch (error) {	
 			let message = "";			
@@ -14,7 +15,8 @@ export class FileSystemProvider implements FileService {
 	}	
 
 	write(filePath: string, data: string): void {
-		try {			
+		try {
+			if (filePath === "") throw TypeError;
 			this.fsProvider.writeFileSync(require.resolve(filePath), data, "utf-8");			console.log("Archivo escrito exitosamente.");
 		} catch (error) {			
 			let message = "";			

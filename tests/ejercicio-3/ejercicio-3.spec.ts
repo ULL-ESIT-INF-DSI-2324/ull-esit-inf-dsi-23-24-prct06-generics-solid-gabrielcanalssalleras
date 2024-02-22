@@ -35,5 +35,16 @@ describe('File Manager', () => {
 		fsManager.writeFile('./example.txt', newData);
 		currentContent = fsManager.readFile('./example.txt');
 		expect(currentContent).to.be.equal(newData);
-  })
+  }),
+
+	it('Saltar error si el archivo no existe al leer', () => {
+		expect(() => fsManager.readFile('./example2.txt')).to.throw(Error);
+		expect(() => fsManager.readFile("")).to.throw(Error);
+
+	}),
+
+	it('Saltar error si el archivo no existe al escribir', () => {
+		expect(() => fsManager.writeFile('./example2.txt', 'hola mundo')).to.throw(Error);
+		expect(() => fsManager.writeFile("", 'hola mundo')).to.throw(Error);
+	})
 });
