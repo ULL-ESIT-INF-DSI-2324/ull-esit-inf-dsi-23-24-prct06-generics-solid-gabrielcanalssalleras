@@ -145,7 +145,46 @@ Las pruebas unitarias para este ejercicio se encuentran en el fichero `tests/eje
 
 ### Ejercicio 5
 
-  Este código se puede encontrar en el fichero `src/ejercicio-5.ts`.
+Comprobemos si el código dado cumple con los principios SOLID:
+
+S – **Principio de responsabilidad única**: La estructura del código se adhiere a este principio. Cada clase tiene una única responsabilidad clara y bien definida.
+
+O – **Principio abierto-cerrado**: Podría decirse que el código cumple con este principio, pero con mejoras. La clase `Notifier` está abierta a la extensión (se pueden crear nuevas clases que la implementen), pero no está completamente cerrada a la modificación. Las clases existentes tendrían que modificarse si se requieren nuevas funcionalidades de notificación.
+
+L – **Principio de sustitución de Liskov**: El código cumple con este principio. Las clases pueden ser inercambiables entre sí con `Notifier` sin generar errores o un comportamiento inesperado.
+
+I – **Principio de segregación de la interfaz**: No es aplicable en este código. La interfaz `Notificable` es relativamente simple y parece suficiente.
+
+D – **Principio de inversión de dependencias**: Se cumple con este principio parcialmente. La clase `Notifier` depende de las abstracciones en lugar de implementaciones concretas, pero las clases concretas dependen de la clase `Notifier`.
+
+Como mejora, abstractamos la funcionalidad del servicio de notificación en una interfaz `NotificationService` y la clase `Notifier` depende de esta interfaz en lugar de una implementación concreta. De esta manera, si se necesitan agregar nuevas funcionalidades de notificación, se pueden crear nuevas clases que implementen la interfaz `NotificationService` sin modificar la clase `Notifier`.
+
+```ts
+interface NotificationService {
+  notify(message: string): void;
+}
+
+class Notifier {
+  constructor(private notificationService: NotificationService) {}
+
+  sendNotification(message: string): void {
+    this.notificationService.notify(message);
+  }
+}
+```
+
+Este código se puede encontrar en el fichero `src/ejercicio-5/ejercicio-5.ts`.
+
+Las **pruebas** que se han realizado mediante el **Desarrollo Dirigido por Pruebas** son las siguientes:
+
+- Creación de un servicio de notificación.
+- Creación de un notificador por email.
+- Creación de un notificador por SMS.
+- Se envía una notificación por email.
+- Se envía una notificación por SMS.
+- Se envía una notificación a través del servicio de notificación.
+
+Las pruebas unitarias para este ejercicio se encuentran en el fichero `tests/ejercicio-5/ejercicio-5.spec.ts`.
 
 ## Conclusión
 Los ejercicios elaborados han expandido nuestro entendimiento sobre las clases e interfaces genéricas, así como de los principios SOLID. Cada ejercicio abordado no solo ha desafiado nuestra destreza técnica, sino que también ha requerido una comprensión sólida de conceptos fundamentales. La ejecución exitosa de estos ejercicios refleja la capacidad de aplicar conocimientos teóricos y la habilidad para resolver problemas prácticos. Esta experiencia ha fortalecido nuestra competencia en el uso efectivo de TypeScript, contribuyendo así al desarrollo integral de nuestras habilidades de programación.

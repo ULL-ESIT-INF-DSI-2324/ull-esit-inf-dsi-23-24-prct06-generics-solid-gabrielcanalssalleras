@@ -1,21 +1,23 @@
-// Class that allows notifications by email to be sent
-class EmailService {
+// class that allows notifications by email to be sent
+export class EmailService {
   notify(message: string): void {
     console.log(`Sending notification by email: ${message}`);
   }
 }
 
-// Class that allows notifications by SMS to be sent
-class ShortMessageService {
+// class that allows notifications by SMS to be sent
+export class ShortMessageService {
   notify(message: string): void {
     console.log(`Sending notification by SMS: ${message}`);
   }
 }
 
-// Class that makes use of different types of services to perform notifications
-class Notifier {
-  constructor(private notificationService: EmailService | ShortMessageService) {
-  }
+interface NotificationService {
+  notify(message: string): void;
+}
+
+export class Notifier {
+  constructor(private notificationService: NotificationService) {}
 
   sendNotification(message: string): void {
     this.notificationService.notify(message);
