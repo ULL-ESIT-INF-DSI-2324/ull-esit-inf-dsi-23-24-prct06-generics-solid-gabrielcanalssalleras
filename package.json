@@ -1,0 +1,40 @@
+{
+  "name": "p06-exercises",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha ./tests/**/*.spec.ts",
+    "test1": "mocha ./tests/ejercicio-1/ejercicio-1.spec.ts",
+    "test2": "mocha ./tests/ejercicio-2/ejercicio-2.spec.ts",
+    "test3": "mocha ./tests/ejercicio-3/ejercicio-3.spec.ts",
+    "test4": "mocha ./tests/ejercicio-4/ejercicio-4.spec.ts",
+    "test5": "mocha ./tests/ejercicio-5jercicio-5.spec.ts",
+    "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
+    "start1": "tsc-watch --onSuccess \"node dist/src/ejercicio-1/index.js\"",
+    "start2": "tsc-watch --onSuccess \"node dist/src/ejercicio-2/index.js\"",
+    "start4": "tsc-watch --onSuccess \"node dist/src/ejercicio-4/index.js\"",
+    "start5": "tsc-watch --onSuccess \"node dist/src/ejercicio-5/index.js\"",
+    "doc": "typedoc --out docs src; touch docs/.nojekyll"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/chai": "^4.3.11",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "^20.11.19",
+    "@typescript-eslint/eslint-plugin": "^7.0.2",
+    "@typescript-eslint/parser": "^7.0.2",
+    "chai": "^4.3.7",
+    "coveralls": "^3.1.1",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "mocha": "^10.3.0",
+    "nyc": "^15.1.0",
+    "prettier": "^3.2.5",
+    "ts-node": "^10.9.2",
+    "tsc-watch": "^6.0.4",
+    "typedoc": "^0.25.8"
+  }
+}
