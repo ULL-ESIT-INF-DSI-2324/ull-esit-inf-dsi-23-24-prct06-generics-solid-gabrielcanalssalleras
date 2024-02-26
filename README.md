@@ -226,5 +226,30 @@ Las **pruebas** que se han realizado mediante el **Desarrollo Dirigido por Prueb
 
 Las pruebas unitarias para este ejercicio se encuentran en el fichero `tests/ejercicio-5/ejercicio-5.spec.ts`.
 
+## Modificación
+
+El ejercicio de modificación pide:
+
+1. Crear la interfaz `Collectable` que incluirá los métodos `addItem`, `getItem`, `removeItem` y `getNumberOfItems`.
+2. Crear la interfaz `Searchable` que incluirá el método `search`.
+3. Crear la clase abstracta `SearchableCollection` que implementará las interfaces `Collectable` y `Searchable`. Esta clase incluirá un array interno para almacenar elementos en la colección y los métodos necesarios para manipular la colección.
+4. Crear la clase `NumericSearchableCollection` que extenderá de `SearchableCollection` y que implementará el método `search` para buscar ocurrencias de un número en la colección.
+5. Crear la clase `StringSearchableCollection` que extenderá de `SearchableCollection` y que implementará el método `search` para buscar ocurrencias de una cadena en la colección.
+
+La búsqueda de cadenas se realizará mediane expresiones regulares:
+
+```ts
+const regExp = new RegExp(query);
+this.items.forEach((item) => {
+  if (item.match(regExp)) occurrences.push(item)
+});
+```
+
+Este código se puede encontrar en el directorio `src/modi`. Cada clase e interfaz se encuentra en un fichero separado.
+
+Las **pruebas** que se han realizado mediante el **Desarrollo Dirigido por Pruebas** son las siguientes:
+
+
+
 ## Conclusión
 Los ejercicios elaborados han expandido nuestro entendimiento sobre las clases e interfaces genéricas, así como de los principios SOLID. Cada ejercicio abordado no solo ha desafiado nuestra destreza técnica, sino que también ha requerido una comprensión sólida de conceptos fundamentales. La ejecución exitosa de estos ejercicios refleja la capacidad de aplicar conocimientos teóricos y la habilidad para resolver problemas prácticos. Esta experiencia ha fortalecido nuestra competencia en el uso efectivo de TypeScript, contribuyendo así al desarrollo integral de nuestras habilidades de programación.
