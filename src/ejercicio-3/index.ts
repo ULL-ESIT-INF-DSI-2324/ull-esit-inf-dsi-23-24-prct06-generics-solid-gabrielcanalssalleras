@@ -1,19 +1,12 @@
-import { FileSystemProvider } from "./file_system_provider";
-import { FileManager } from "./file_manager";
-import * as fs from "fs";
+import { FileReader } from "./file_reader";
+import { FileWriter } from "./file_writer";
 
 // Client code
-const fileOperation = new FileSystemProvider(fs);
-const fileManager = new FileManager(fileOperation);
+const filePath = "example.txt";
+const fileWriter = new FileWriter(filePath);
+fileWriter.write(filePath, "Hello, world!");
 
-// Reading content
-const currentContent = fileManager.readFile("example.txt");
-console.log("Current content:", currentContent);
+const fileReader = new FileReader(filePath);
+console.log(fileReader.read(filePath));
 
-// Writing content
-const newData = "This is new content to be written into the file.";
-fileManager.writeFile("example.txt", newData);
 
-// Updating content
-const updatedContent = fileManager.readFile("example.txt");
-console.log("Updated content:", updatedContent);

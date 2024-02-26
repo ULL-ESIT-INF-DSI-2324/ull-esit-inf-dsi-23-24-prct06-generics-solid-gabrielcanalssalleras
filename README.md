@@ -112,26 +112,24 @@ Las pruebas unitarias para este ejercicio se encuentran en el fichero `tests/eje
 
 Con el código dado se procede a comprobar si cumple los principios SOLID:
 
-S – **Principio de responsabilidad única**: La clase FileManager cumple con este principio. Su única responsabilidad es gestionar la lectura y escritura de archivos.
+S – **Principio de responsabilidad única**: No se cumple con este principio. La clase `FileManager` tiene dos responsabilidades: leer y escribir archivos. Deberíamos abstraer la funcionalidad de lectura y escritura se divide en dos clases separadas, `FileReader` y `FileWriter`.
 
-O – **Principio abierto-cerrado**: El código no está completamente abierto para la extensión. Si se necesitan agregar nuevas funcionalidades se deberá modificar la clase FileManager.
- 
-Para solucionar esta situación, procedemos a **abstraer** la funcionalidad de lectura y escritura de archivos en una interfaz `FileService` y una clase `FileSystemProvider` que implementa dicha interfaz. De esta manera, si se necesitan agregar nuevas funcionalidades, se pueden crear nuevas clases que implementen la interfaz `FileService` sin modificar la clase `FileManager`, que es la clase que se utilizar a nivel de aplicación.
+O – **Principio abierto-cerrado**: Se cumple. El código está abierto a la extensión (se pueden crear nuevas clases que implementen la interfaz `FileService`), pero no está completamente cerrado a la modificación.
 
 L – **Principio de sustitución de Liskov**: Al no haber subclases, este principio no es aplicable en el código. 
 
-I – **Principio de segregación de la interfaz**: La interfaz actual de FileManager es relativamente simple y parece suficiente. Si se agregaran más operaciones de gestión de archivos se debe considerar crear interfaces o métodos separados para cada funcionalidad.
+I – **Principio de segregación de la interfaz**: La interfaz actual es relativamente simple y parece suficiente. Si se agregaran más operaciones de gestión de archivos se debe considerar crear interfaces o métodos separados para cada funcionalidad.
 
-D – **Principio de inversión de dependencias**: De igual manera que con el Principio abierto-cerrado, la clase FileManager depende directamente del módulo fs para realizar operaciones de archivo, por lo que deberiamos abstraer el módulo fs para que la clase FileManager no dependa directamente de él.
+D – **Principio de inversión de dependencias**: Se cumple.
 
-Con la solución propuesto, ahora es posible crear nuevas clases que implementen la interfaz `FileService` sin modificar la clase `FileManager`. Además, se ha abstraído el módulo fs en la clase `FileSystemProvider` para que la clase `FileManager` no dependa directamente de él.
+Con la solución propuesto, ahora se han dividido las responsabilidades de lectura y escritura de archivos en dos clases separadas, `FileReader` y `FileWriter`. 
 
 Este código se puede encontrar en el directorio `src/ejercicio-3`. Cada clase e interfaz se encuentra en un fichero separado.
 
 Las **pruebas** que se han realizado mediante el **Desarrollo Dirigido por Pruebas** son las siguientes:
 
-- Creación del proveedor de sistema de archivos.
-- Creación del gestor de archivos.
+- Creación del lector de archivos.
+- Creación del escritor de archivos.
 - Lectura de un archivo.
 - Escritura de un archivo.
 - Error al leer un archivo que no existe.
@@ -237,6 +235,25 @@ El ejercicio de modificación pide:
 5. Crear la clase `StringSearchableCollection` que extenderá de `SearchableCollection` y que implementará el método `search` para buscar ocurrencias de una cadena en la colección.
 
 La búsqueda de cadenas se realizará mediane expresiones regulares:
+
+- Creación de una colección de números.
+- Creación de una colección de cadenas.
+- Las colecciones heredan de la clase abstracta `SearchableCollection`.
+- Las colecciones responden a los métodos de la interfaz `Searchable`.
+- La colección numérica almacenará números.
+- La colección de cadenas almacenará cadenas.
+- Se pueden eliminar elementos de las colecciones de números.
+- Se pueden eliminar elementos de las colecciones de cadenas.
+- Se pueden buscar elementos en las colecciones de números.
+- Se pueden buscar elementos en las colecciones de cadenas.
+- Se pueden obtener elementos de las colecciones de números.
+- Se pueden obtener elementos de las colecciones de cadenas.
+- Se puede obtener el número de elementos de las colecciones de números.
+- Se puede obtener el número de elementos de las colecciones de cadenas.
+- Se puede eliminar un elemento de las colecciones.
+- No se puede eliminar un elemento que no existe en las colecciones.
+
+Las pruebas unitarias para este ejercicio se encuentran en el fichero `tests/modi/modi.spec.ts`.
 
 ```ts
 const regExp = new RegExp(query);
